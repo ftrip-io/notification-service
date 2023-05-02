@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ftrip.io.notification-service", "ftrip.io.notification-service\ftrip.io.notification-service.csproj", "{658292B1-78D7-4F28-A0F6-E990F87F2CAA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ftrip.io.notification-service.contracts", "ftrip.io.notification-service.contracts\ftrip.io.notification-service.contracts.csproj", "{47E14114-A1D9-42C9-838E-37E2B2DEEEFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ftrip.io.notification-service.unit-tests", "ftrip.io.notification-service.unit-tests\ftrip.io.notification-service.unit-tests.csproj", "{4E5E567E-E55E-4E56-96CE-4C09743CA1E9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{658292B1-78D7-4F28-A0F6-E990F87F2CAA} = {658292B1-78D7-4F28-A0F6-E990F87F2CAA}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{658292B1-78D7-4F28-A0F6-E990F87F2CAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{658292B1-78D7-4F28-A0F6-E990F87F2CAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{658292B1-78D7-4F28-A0F6-E990F87F2CAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{658292B1-78D7-4F28-A0F6-E990F87F2CAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47E14114-A1D9-42C9-838E-37E2B2DEEEFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47E14114-A1D9-42C9-838E-37E2B2DEEEFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47E14114-A1D9-42C9-838E-37E2B2DEEEFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47E14114-A1D9-42C9-838E-37E2B2DEEEFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E5E567E-E55E-4E56-96CE-4C09743CA1E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E5E567E-E55E-4E56-96CE-4C09743CA1E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E5E567E-E55E-4E56-96CE-4C09743CA1E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E5E567E-E55E-4E56-96CE-4C09743CA1E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {51B94A75-C8D0-49C8-B4D4-4BE814AA2AA1}
+	EndGlobalSection
+EndGlobal
