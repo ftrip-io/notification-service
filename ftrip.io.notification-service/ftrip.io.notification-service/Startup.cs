@@ -10,6 +10,7 @@ using ftrip.io.framework.Persistence.NoSql.Mongodb.Installers;
 using ftrip.io.framework.Secrets;
 using ftrip.io.framework.Swagger;
 using ftrip.io.framework.Validation;
+using ftrip.io.notification_service.Installers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -43,7 +44,8 @@ namespace ftrip.io.notification_service
                 new MongodbInstaller(services),
                 new MongodbHealthCheckInstaller(services),
                 new CQRSInstaller<Startup>(services),
-                new RabbitMQInstaller<Startup>(services, RabbitMQInstallerType.Publisher | RabbitMQInstallerType.Consumer)
+                new RabbitMQInstaller<Startup>(services, RabbitMQInstallerType.Publisher | RabbitMQInstallerType.Consumer),
+                new DependenciesIntaller(services)
             ).Install();
         }
 
