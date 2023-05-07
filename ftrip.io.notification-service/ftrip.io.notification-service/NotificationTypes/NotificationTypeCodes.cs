@@ -8,7 +8,7 @@
         public const string GradedHost = "GradedHost";
         public const string GradedAccommodation = "GradedAccommodation";
 
-        public static string[] All = new[]
+        public static readonly string[] All = new[]
         {
             AnswerOnReservation,
             NewReservation,
