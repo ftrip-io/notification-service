@@ -20,7 +20,7 @@ namespace ftrip.io.notification_service.NotificationTypes.UseCases.ReadByUserTyp
             return await _notificationTypeRepository
                 .Query()
                 .Where(notificationType => notificationType.AllowedUserTypes.Contains(request.UserType))
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
         }
     }
 }
