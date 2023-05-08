@@ -16,4 +16,8 @@
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ftrip.io.notification-service\ftrip.io.notification-service.csproj" />
+  </ItemGroup>
+
 </Project>
