@@ -4,11 +4,21 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>ftrip.io.notification_service.contracts</RootNamespace>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>ftrip.io</Authors>
+    <Company>ftrip.io</Company>
+    <Description>This library contains all necessary notification-service contracts such as events, commands, and requests/responses that can be used for handling/communicating in other services.</Description>
+    <Copyright>Ftrip.io 2023</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/ftrip-io/ftrip.io</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ftrip-io/ftrip.io</RepositoryUrl>
+    <PackageTags>ftrip.io, notification-service, contracts</PackageTags>
+    <PackageReleaseNotes>Initial version with Notification events.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(Configuration)'=='Release'">
-    <PackageReference Include="ftrip.io.framework" Version="2.3.0" />
-    <PackageReference Include="ftrip.io.framework.messaging" Version="2.3.0" />
+    <PackageReference Include="ftrip.io.framework" Version="2.4.0" />
+    <PackageReference Include="ftrip.io.framework.messaging" Version="2.4.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)'=='Debug'">
