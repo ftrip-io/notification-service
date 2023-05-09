@@ -1,4 +1,5 @@
 ﻿using ftrip.io.framework.Installers;
+using ftrip.io.notification_service.Notifications;
 using ftrip.io.notification_service.NotificationTypes;
 using ftrip.io.notification_service.UserNotificationTypes;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +19,8 @@ namespace ftrip.io.notification_service.Installers
         {
             _services.AddScoped<INotificationTypeRepository, NotificationTypeRepository>();
             _services.AddScoped<IUserNotificationTypeRepository, UserNotificationTypeRepository>();
+            _services.AddScoped<INotificationRepository, NotificationRepository>();
+            _services.AddScoped<INotificationsQueryHelper, NotificationsQueryHelper>();
         }
     }
 }
