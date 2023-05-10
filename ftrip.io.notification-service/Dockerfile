@@ -1,15 +1,26 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine AS build
 WORKDIR /build
 
-# Copy everything
+ARG CONFIGURATION=Release
+
+# Restore dependencies
+COPY ["ftrip.io.notification-service.contracts/*.csproj", "ftrip.io.notification-service.contracts/package*.json", "./ftrip.io.notification-service.contracts/"]
+RUN dotnet restore /p:Configuration=$CONFIGURATION ftrip.io.notification-service.contracts/ftrip.io.notification-service.contracts.csproj
+
+COPY ["ftrip.io.notification-service/*.csproj", "ftrip.io.notification-service/package*.json", "./ftrip.io.notification-service/"]
+RUN dotnet restore /p:Configuration=$CONFIGURATION ftrip.io.notification-service/ftrip.io.notification-service.csproj
+
+# Publish
 COPY . .
 
-# Build and publish a release
-RUN dotnet publish --source=/build/.nuget/packages -c Release -o out
-
+RUN dotnet publish -c $CONFIGURATION -o out ftrip.io.notification-service/ftrip.io.notification-service.csproj
+ 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-alpine AS final
 WORKDIR /app
+
 COPY --from=build /build/out .
+
+EXPOSE 80
 
 ENTRYPOINT ["dotnet", "ftrip.io.notification-service.dll"]
