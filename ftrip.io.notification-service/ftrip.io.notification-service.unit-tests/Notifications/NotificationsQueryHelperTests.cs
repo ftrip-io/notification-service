@@ -4,9 +4,8 @@ using ftrip.io.framework.Globalization;
 using ftrip.io.notification_service.Notifications;
 using ftrip.io.notification_service.Notifications.Domain;
 using Moq;
+using Serilog;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -17,6 +16,7 @@ namespace ftrip.io.notification_service.unit_tests.Notifications
     {
         private readonly Mock<INotificationRepository> _notificationRepositoryMock = new Mock<INotificationRepository>();
         private readonly Mock<IStringManager> _stringManagerMock = new Mock<IStringManager>();
+        private readonly Mock<ILogger> _loggerMock = new Mock<ILogger>();
 
         private readonly NotificationsQueryHelper _notificationsQueryHelper;
 
@@ -24,7 +24,8 @@ namespace ftrip.io.notification_service.unit_tests.Notifications
         {
             _notificationsQueryHelper = new NotificationsQueryHelper(
                 _notificationRepositoryMock.Object,
-                _stringManagerMock.Object
+                _stringManagerMock.Object,
+                _loggerMock.Object
             );
         }
 
