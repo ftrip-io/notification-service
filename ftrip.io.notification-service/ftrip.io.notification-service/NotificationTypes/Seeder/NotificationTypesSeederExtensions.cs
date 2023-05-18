@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace ftrip.io.notification_service.NotificationTypes.Seeder
 {
@@ -11,18 +11,18 @@ namespace ftrip.io.notification_service.NotificationTypes.Seeder
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                var logger = services.GetRequiredService<ILogger<INotificationTypeRepository>>();
+                var logger = services.GetRequiredService<ILogger>();
                 var repository = services.GetService<INotificationTypeRepository>();
                 var seeder = new NotificationTypesSeeder(repository);
 
                 if (seeder.ShouldSeed().Result)
                 {
-                    logger.LogInformation($"Seeding notification types.");
+                    logger.Information($"Seeding notification types.");
                     seeder.Seed().Wait();
                 }
                 else
                 {
-                    logger.LogInformation($"Skipped seeding notification types.");
+                    logger.Information($"Skipped seeding notification types.");
                 }
             }
 

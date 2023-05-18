@@ -6,6 +6,7 @@ using ftrip.io.notification_service.Notifications;
 using ftrip.io.notification_service.Notifications.Domain;
 using ftrip.io.notification_service.Notifications.UseCases.Save;
 using Moq;
+using Serilog;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace ftrip.io.notification_service.unit_tests.Notifications.UseCases.Save
     {
         private readonly Mock<INotificationRepository> _notificationRepositoryMock = new Mock<INotificationRepository>();
         private readonly Mock<IMessagePublisher> _messagePublisherMock = new Mock<IMessagePublisher>();
+        private readonly Mock<ILogger> _loggerMock = new Mock<ILogger>();
 
         private readonly SaveNotificationRequestHandler _handler;
 
@@ -30,7 +32,8 @@ namespace ftrip.io.notification_service.unit_tests.Notifications.UseCases.Save
             _handler = new SaveNotificationRequestHandler(
                 _notificationRepositoryMock.Object,
                 mapper,
-                _messagePublisherMock.Object
+                _messagePublisherMock.Object,
+                _loggerMock.Object
             );
         }
 
