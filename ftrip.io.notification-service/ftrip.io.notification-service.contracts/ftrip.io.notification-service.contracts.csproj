@@ -13,12 +13,13 @@
     <PackageProjectUrl>https://github.com/ftrip-io/ftrip.io</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ftrip-io/ftrip.io</RepositoryUrl>
     <PackageTags>ftrip.io, notification-service, contracts</PackageTags>
-    <PackageReleaseNotes>Initial version with Notification events.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added NotificationId to NotificationSavedEvent.</PackageReleaseNotes>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(Configuration)'=='Release'">
-    <PackageReference Include="ftrip.io.framework" Version="2.4.0" />
-    <PackageReference Include="ftrip.io.framework.messaging" Version="2.4.0" />
+    <PackageReference Include="ftrip.io.framework" Version="2.5.1" />
+    <PackageReference Include="ftrip.io.framework.messaging" Version="2.5.1" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)'=='Debug'">

@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 using System;
 
 namespace ftrip.io.notification_service
@@ -56,6 +57,8 @@ namespace ftrip.io.notification_service
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSerilogRequestLogging();
 
             app.UseHttpsRedirection();
 
