@@ -1,4 +1,5 @@
 using ftrip.io.framework.auth;
+using ftrip.io.framework.Correlation;
 using ftrip.io.framework.CQRS;
 using ftrip.io.framework.ExceptionHandling.Extensions;
 using ftrip.io.framework.Globalization;
@@ -9,6 +10,7 @@ using ftrip.io.framework.messaging.Installers;
 using ftrip.io.framework.Persistence.NoSql.Mongodb.Installers;
 using ftrip.io.framework.Secrets;
 using ftrip.io.framework.Swagger;
+using ftrip.io.framework.Tracing;
 using ftrip.io.framework.Validation;
 using ftrip.io.notification_service.Installers;
 using Microsoft.AspNetCore.Builder;
@@ -46,7 +48,14 @@ namespace ftrip.io.notification_service
                 new MongodbHealthCheckInstaller(services),
                 new CQRSInstaller<Startup>(services),
                 new RabbitMQInstaller<Startup>(services, RabbitMQInstallerType.Publisher | RabbitMQInstallerType.Consumer),
-                new DependenciesIntaller(services)
+                new DependenciesIntaller(services),
+                new CorrelationInstaller(services),
+                new TracingInstaller(services, (tracingSettings) =>
+                {
+                    tracingSettings.ApplicationLabel = "notifications";
+                    tracingSettings.ApplicationVersion = GetType().Assembly.GetName().Version?.ToString() ?? "unknown";
+                    tracingSettings.MachineName = Environment.MachineName;
+                })
             ).Install();
         }
 
@@ -73,6 +82,7 @@ namespace ftrip.io.notification_service
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseCorrelation();
             app.UseFtripioGlobalExceptionHandler();
 
             app.UseEndpoints(endpoints =>
