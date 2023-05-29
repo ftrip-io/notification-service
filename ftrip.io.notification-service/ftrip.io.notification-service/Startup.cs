@@ -8,6 +8,7 @@ using ftrip.io.framework.Installers;
 using ftrip.io.framework.Mapping;
 using ftrip.io.framework.messaging.Installers;
 using ftrip.io.framework.Persistence.NoSql.Mongodb.Installers;
+using ftrip.io.framework.Proxies;
 using ftrip.io.framework.Secrets;
 using ftrip.io.framework.Swagger;
 using ftrip.io.framework.Tracing;
@@ -55,7 +56,8 @@ namespace ftrip.io.notification_service
                     tracingSettings.ApplicationLabel = "notifications";
                     tracingSettings.ApplicationVersion = GetType().Assembly.GetName().Version?.ToString() ?? "unknown";
                     tracingSettings.MachineName = Environment.MachineName;
-                })
+                }),
+                new ProxyGeneratorInstaller(services)
             ).Install();
         }
 

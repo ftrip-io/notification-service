@@ -1,4 +1,5 @@
 ﻿using ftrip.io.framework.Installers;
+using ftrip.io.framework.Proxies;
 using ftrip.io.notification_service.Notifications;
 using ftrip.io.notification_service.NotificationTypes;
 using ftrip.io.notification_service.UserNotificationTypes;
@@ -17,10 +18,10 @@ namespace ftrip.io.notification_service.Installers
 
         public void Install()
         {
-            _services.AddScoped<INotificationTypeRepository, NotificationTypeRepository>();
-            _services.AddScoped<IUserNotificationTypeRepository, UserNotificationTypeRepository>();
-            _services.AddScoped<INotificationRepository, NotificationRepository>();
-            _services.AddScoped<INotificationsQueryHelper, NotificationsQueryHelper>();
+            _services.AddProxiedScoped<INotificationTypeRepository, NotificationTypeRepository>();
+            _services.AddProxiedScoped<IUserNotificationTypeRepository, UserNotificationTypeRepository>();
+            _services.AddProxiedScoped<INotificationRepository, NotificationRepository>();
+            _services.AddProxiedScoped<INotificationsQueryHelper, NotificationsQueryHelper>();
         }
     }
 }
