@@ -2,6 +2,16 @@
   "version": 1,
   "dependencies": {
     ".NETCoreApp,Version=v3.1": {
+      "ftrip.io.booking-service.contracts": {
+        "type": "Direct",
+        "requested": "[1.0.0, )",
+        "resolved": "1.0.0",
+        "contentHash": "X5p0hryRm9HkgENWW2MxmnOrf0tnQEMSFRyLiDlexR3PVZORBOUNgp4ZsId8QpW5aJN+MS4H4+aNZ6Y1PuBm2w==",
+        "dependencies": {
+          "ftrip.io.framework": "2.6.1",
+          "ftrip.io.framework.messaging": "2.6.1"
+        }
+      },
       "ftrip.io.framework": {
         "type": "Direct",
         "requested": "[2.6.1, )",
