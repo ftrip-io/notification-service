@@ -12,6 +12,8 @@ namespace ftrip.io.notification_service.UserNotificationTypes
     {
         Task<IEnumerable<UserNotificationType>> ReadByUserId(string userId, CancellationToken cancellationToken);
 
+        Task<UserNotificationType> ReadByUserIdAndCode(string userId, string code, CancellationToken cancellationToken);
+
         Task<IEnumerable<UserNotificationType>> CreateRange(IEnumerable<UserNotificationType> notificationTypes, CancellationToken cancellationToken);
     }
 
@@ -27,6 +29,13 @@ namespace ftrip.io.notification_service.UserNotificationTypes
             return await _collection
                 .Find(userNotificationType => userNotificationType.UserId == userId)
                 .ToListAsync(cancellationToken);
+        }
+
+        public async Task<UserNotificationType> ReadByUserIdAndCode(string userId, string code, CancellationToken cancellationToken)
+        {
+            return await _collection
+                .Find(userNotificationType => userNotificationType.UserId == userId && userNotificationType.Code == code)
+                .FirstOrDefaultAsync(cancellationToken);
         }
 
         public async Task<IEnumerable<UserNotificationType>> CreateRange(IEnumerable<UserNotificationType> notificationTypes, CancellationToken cancellationToken)

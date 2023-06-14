@@ -22,6 +22,7 @@ namespace ftrip.io.notification_service.Installers
             _services.AddProxiedScoped<IUserNotificationTypeRepository, UserNotificationTypeRepository>();
             _services.AddProxiedScoped<INotificationRepository, NotificationRepository>();
             _services.AddProxiedScoped<INotificationsQueryHelper, NotificationsQueryHelper>();
+            _services.AddProxiedScoped<IUserNotificationTypeEligibilityHelper, UserNotificationTypeEligibilityHelper>();
         }
     }
 }
