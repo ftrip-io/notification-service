@@ -22,7 +22,7 @@ WORKDIR /app
 RUN addgroup --system ftrip-io
 RUN adduser --system notification-service
 
-COPY --from=build --chown=notification-service:ftrip-io --chmod=500 /build/out .
+COPY --from=build --chown=notification-service:ftrip-io --chmod=777 /build/out .
 
 EXPOSE 80
 
