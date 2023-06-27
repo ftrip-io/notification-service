@@ -19,8 +19,7 @@ RUN dotnet publish -c $CONFIGURATION -o out ftrip.io.notification-service/ftrip.
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-alpine AS final
 WORKDIR /app
 
-RUN addgroup --system ftrip-io
-RUN adduser --system notification-service
+RUN addgroup --system ftrip-io && adduser --system notification-service
 
 COPY --from=build --chown=notification-service:ftrip-io --chmod=777 /build/out .
 
